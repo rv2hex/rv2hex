@@ -1,3 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" width="100%" height="160">
+  <defs>
+    <style>
+      @keyframes pulseGlow {
+        0%, 100% { text-shadow: 0 0 5px #00ff66, 0 0 10px #00ff66; filter: drop-shadow(0 0 2px #00ff66); }
+        50% { text-shadow: 0 0 15px #00ff66, 0 0 25px #00ff66; filter: drop-shadow(0 0 8px #00ff66); }
+      }
+      @keyframes matrixRain {
+        0% { opacity: 0.1; }
+        50% { opacity: 0.9; fill: #00ff66; }
+        100% { opacity: 0.1; }
+      }
+      @keyframes scanline {
+        0% { transform: translateY(-10px); }
+        100% { transform: translateY(170px); }
+      }
+      @keyframes cursorBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      .bg { fill: #0d1117; stroke: #00ff66; stroke-width: 1.5; rx: 10px; }
+      .matrix-dim { font-family: 'Courier New', monospace; fill: #003b15; font-size: 13px; font-weight: bold; }
+      .matrix-bright { font-family: 'Courier New', monospace; font-size: 13px; font-weight: bold; animation: matrixRain 2s infinite ease-in-out; }
+      .terminal-text { font-family: 'Courier New', monospace; fill: #00ff66; font-size: 22px; font-weight: bold; animation: pulseGlow 3s infinite alternate; }
+      .cursor { fill: #00ff66; animation: cursorBlink 0.8s infinite; }
+      .scanline { fill: url(#scan-grad); opacity: 0.2; animation: scanline 3s linear infinite; }
+    </style>
+
+    <linearGradient id="scan-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00ff66" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00ff66" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00ff66" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="796" height="156" x="2" y="2" class="bg" />
+
+  <g class="matrix-dim">
+    <text x="20" y="30">01001000 01100001 01100011 01101011 00100000 01110100 01101000 01100101 00100000</text>
+    <text x="20" y="60">01110000 01101100 01100001 01101110 01100101 01110100 00100000 01010000 01111001</text>
+    <text x="20" y="90">01110100 01101000 01101111 01101110 00100000 01010011 01100101 01100011 01110101</text>
+    <text x="20" y="120">01110010 01101001 01100100 01111001 00100000 01010011 01101000 01100101 01101100</text>
+  </g>
+
+  <g class="matrix-bright">
+    <text x="100" y="30" style="animation-delay: 0.1s;">01100011</text>
+    <text x="450" y="30" style="animation-delay: 0.7s;">01101000</text>
+    <text x="220" y="60" style="animation-delay: 0.4s;">01100001</text>
+    <text x="580" y="60" style="animation-delay: 1.2s;">01010000</text>
+    <text x="180" y="90" style="animation-delay: 0.9s;">01101111</text>
+    <text x="380" y="90" style="animation-delay: 0.3s;">01010011</text>
+    <text x="300" y="120" style="animation-delay: 1.5s;">01100100</text>
+  </g>
+
+  <text x="35" y="88" class="terminal-text">&gt; rv2hex@Github:~# </text>
+  <rect x="440" y="68" width="12" height="22" class="cursor" />
+
+  <rect x="2" y="0" width="796" height="15" class="scanline" />
+</svg>
+
+
 ### 🛡️ About Me
 * 🔐 **Focus & Interests:** Cybersecurity, Security Scripting, and Automation
 * 🌱 **Currently Learning:** Python, Java, and Secure Application Development
