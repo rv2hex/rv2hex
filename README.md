@@ -4,8 +4,6 @@
 
 <br/>
 
-[![PLAY MATRIX DEFENDER](https://img.shields.io/badge/🎮_LAUNCH_MATRIX_DEFENDER-PLAY_NOW-00ff66?style=for-the-badge&labelColor=000000)](https://rv2hex.github.io/matrix-shooter/)
-
 <div align="center">
   <img src="./matrix-profile.svg" alt="rv2hex Matrix Cyber Profile" width="100%" />
 </div>
