@@ -4,12 +4,12 @@
 
 <br/>
 
+[![PLAY MATRIX DEFENDER](https://img.shields.io/badge/🎮_LAUNCH_MATRIX_DEFENDER-PLAY_NOW-00ff66?style=for-the-badge&labelColor=000000)](https://rv2hex.github.io/matrix-shooter/)
+
 ```diffh
 + [SYS_STATUS]: SYSTEM ONLINE
 + [OPERATOR]: rv2hex
 + [PRIMARY_DIRECTIVE]: Cybersecurity | Python Scripting | Application Security
-
-[![PLAY MATRIX DEFENDER](https://img.shields.io/badge/🎮_LAUNCH_MATRIX_DEFENDER-PLAY_NOW-00ff66?style=for-the-badge&labelColor=000000)](https://rv2hex.github.io/matrix-shooter/)
 
 🟢 0x01 // ABOUT_ME
 
