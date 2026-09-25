@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./pf.svg" alt="Matrix Header" width="100%" />
+  <img src="./pf.svg" alt="Matrix Header" width="100%"/>
 </div>
 
 <br/>
