@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" width="100%" height="100%" style="background-color: #020004;">
   <defs>
-    <!-- Red Neon Glow Filter for Foreground Characters -->
+    <!-- Red Neon Glow Filter -->
     <filter id="neon-red-glow" x="-50%" y="-50%" width="200%" height="200%">
       <feGaussianBlur stdDeviation="2.5" result="blur1" />
       <feGaussianBlur stdDeviation="6" result="blur2" />
@@ -8,22 +8,6 @@
       <feMerge>
         <feMergeNode in="blur3" />
         <feMergeNode in="blur2" />
-        <feMergeNode in="blur1" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
-
-    <!-- Intense White Head Lead Glow Filter -->
-    <filter id="head-lead-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="1.5" result="blur1" />
-      <feGaussianBlur stdDeviation="4" result="blur2" />
-      <feColorMatrix type="matrix" values="
-        1 0 0 0 0.5
-        0 0 0 0 0.05
-        0 0 0 0 0.15
-        0 0 0 1 0" in="blur2" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur" />
         <feMergeNode in="blur1" />
         <feMergeNode in="SourceGraphic" />
       </feMerge>
@@ -41,16 +25,6 @@
       </feMerge>
     </filter>
 
-    <!-- Background Depth Blur for Far Layer Rain -->
-    <filter id="far-depth-blur">
-      <feGaussianBlur stdDeviation="2" />
-    </filter>
-
-    <!-- Heavy Ambient Red Glow Nebula -->
-    <filter id="ambient-nebula">
-      <feGaussianBlur stdDeviation="90" />
-    </filter>
-
     <!-- Radial Background Gradient -->
     <radialGradient id="matrix-bg-gradient" cx="50%" cy="50%" r="75%">
       <stop offset="0%" stop-color="#3d000b" stop-opacity="0.8"/>
@@ -58,18 +32,13 @@
       <stop offset="100%" stop-color="#020004" stop-opacity="1"/>
     </radialGradient>
 
-    <!-- Subtle Digital Grid Background -->
-    <pattern id="cyber-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ff0033" stroke-width="0.4" opacity="0.08"/>
-    </pattern>
-
     <!-- Scanline Overlay -->
     <pattern id="scanlines" width="100" height="3" patternUnits="userSpaceOnUse">
       <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-width="1" opacity="0.4"/>
     </pattern>
 
     <style>
-      /* Fall Animations for Heavy Rain Layers */
+      /* Fall Animations for Rain Layers */
       @keyframes fall-layer-bg {
         0% { transform: translateY(-350px); }
         100% { transform: translateY(650px); }
@@ -78,17 +47,6 @@
       @keyframes fall-layer-mid {
         0% { transform: translateY(-420px); }
         100% { transform: translateY(720px); }
-      }
-
-      @keyframes fall-layer-fore {
-        0% { transform: translateY(-500px); }
-        100% { transform: translateY(800px); }
-      }
-
-      /* Head Character Pulsing Effect */
-      @keyframes head-pulse {
-        0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 2px #ffffff); }
-        50% { opacity: 1; filter: drop-shadow(0 0 8px #ff4d6d); }
       }
 
       /* Center Badge Pulse */
@@ -105,9 +63,7 @@
 
       .bg-rain { animation: fall-layer-bg linear infinite; }
       .mid-rain { animation: fall-layer-mid linear infinite; }
-      .fore-rain { animation: fall-layer-fore linear infinite; }
 
-      .head-char { animation: head-pulse 1.2s ease-in-out infinite; }
       .badge-border { animation: badge-pulse 3s ease-in-out infinite; }
     </style>
   </defs>
@@ -116,372 +72,30 @@
   <rect width="100%" height="100%" fill="#020004" />
   <rect width="100%" height="100%" fill="url(#matrix-bg-gradient)" />
 
-  <!-- Ambient Red Nebula Glow Orbs -->
-  <circle cx="250" cy="200" r="300" fill="#ff003d" opacity="0.1" filter="url(#ambient-nebula)"/>
-  <circle cx="750" cy="250" r="350" fill="#cc002b" opacity="0.14" filter="url(#ambient-nebula)"/>
-  <circle cx="1250" cy="300" r="300" fill="#88001b" opacity="0.12" filter="url(#ambient-nebula)"/>
-
-  <!-- Cyber Grid Pattern -->
-  <rect width="100%" height="100%" fill="url(#cyber-grid)" />
-
-  <!-- LAYER 1: BACKGROUND HEAVY RAIN (Small font, out of focus, deep dark crimson) -->
-  <g class="matrix-text" font-size="11" fill="#660012" opacity="0.45" filter="url(#far-depth-blur)">
-    <!-- Real Japanese Phrases: 電脳空間 (Cyberspace), 暗号系統 (Cryptography), 自由意志 (Free Will), 思考回路 (Thought Circuit) -->
-    <g class="bg-rain" style="animation-duration: 6.5s; animation-delay: 0s;"><text x="25" y="0"><tspan x="25" dy="0">電</tspan><tspan x="25" dy="14">脳</tspan><tspan x="25" dy="14">空</tspan><tspan x="25" dy="14">間</tspan><tspan x="25" dy="14">1</tspan><tspan x="25" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 8.0s; animation-delay: -3.2s;"><text x="65" y="0"><tspan x="65" dy="0">0</tspan><tspan x="65" dy="14">1</tspan><tspan x="65" dy="14">自</tspan><tspan x="65" dy="14">由</tspan><tspan x="65" dy="14">意</tspan><tspan x="65" dy="14">志</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 5.8s; animation-delay: -1.5s;"><text x="105" y="0"><tspan x="105" dy="0">暗</tspan><tspan x="105" dy="14">号</tspan><tspan x="105" dy="14">系</tspan><tspan x="105" dy="14">統</tspan><tspan x="105" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 7.2s; animation-delay: -4.8s;"><text x="145" y="0"><tspan x="145" dy="0">思</tspan><tspan x="145" dy="14">考</tspan><tspan x="145" dy="14">回</tspan><tspan x="145" dy="14">路</tspan><tspan x="145" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 6.0s; animation-delay: -2.1s;"><text x="185" y="0"><tspan x="185" dy="0">量</tspan><tspan x="185" dy="14">子</tspan><tspan x="185" dy="14">計</tspan><tspan x="185" dy="14">算</tspan><tspan x="185" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 8.5s; animation-delay: -5.5s;"><text x="225" y="0"><tspan x="225" dy="0">深</tspan><tspan x="225" dy="14">層</tspan><tspan x="225" dy="14">学</tspan><tspan x="225" dy="14">習</tspan><tspan x="225" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 5.2s; animation-delay: -0.8s;"><text x="265" y="0"><tspan x="265" dy="0">人</tspan><tspan x="265" dy="14">工</tspan><tspan x="265" dy="14">知</tspan><tspan x="265" dy="14">能</tspan><tspan x="265" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 7.8s; animation-delay: -3.8s;"><text x="305" y="0"><tspan x="305" dy="0">情</tspan><tspan x="305" dy="14">報</tspan><tspan x="305" dy="14">通</tspan><tspan x="305" dy="14">信</tspan><tspan x="305" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 6.7s; animation-delay: -1.2s;"><text x="345" y="0"><tspan x="345" dy="0">限</tspan><tspan x="345" dy="14">界</tspan><tspan x="345" dy="14">突</tspan><tspan x="345" dy="14">破</tspan><tspan x="345" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 8.2s; animation-delay: -4.2s;"><text x="385" y="0"><tspan x="385" dy="0">虚</tspan><tspan x="385" dy="14">構</tspan><tspan x="385" dy="14">世</tspan><tspan x="385" dy="14">界</tspan><tspan x="385" dy="14">1</tspan></text></g>
-
-    <!-- Center Left to Center Background Columns -->
-    <g class="bg-rain" style="animation-duration: 6.1s; animation-delay: -2.9s;"><text x="425" y="0"><tspan x="425" dy="0">神</tspan><tspan x="425" dy="14">速</tspan><tspan x="425" dy="14">移</tspan><tspan x="425" dy="14">動</tspan><tspan x="425" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 7.5s; animation-delay: -0.5s;"><text x="465" y="0"><tspan x="465" dy="0">次</tspan><tspan x="465" dy="14">元</tspan><tspan x="465" dy="14">上</tspan><tspan x="465" dy="14">昇</tspan><tspan x="465" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 5.9s; animation-delay: -3.6s;"><text x="505" y="0"><tspan x="505" dy="0">絶</tspan><tspan x="505" dy="14">対</tspan><tspan x="505" dy="14">防</tspan><tspan x="505" dy="14">御</tspan><tspan x="505" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 8.1s; animation-delay: -1.9s;"><text x="545" y="0"><tspan x="545" dy="0">創</tspan><tspan x="545" dy="14">世</tspan><tspan x="545" dy="14">記</tspan><tspan x="545" dy="14">章</tspan><tspan x="545" dy="14">1</tspan></text></g>
-
-    <!-- Center Right to Far Right Background Columns -->
-    <g class="bg-rain" style="animation-duration: 6.4s; animation-delay: -4.5s;"><text x="955" y="0"><tspan x="955" dy="0">漆</tspan><tspan x="955" dy="14">黒</tspan><tspan x="955" dy="14">の</tspan><tspan x="955" dy="14">翼</tspan><tspan x="955" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 7.9s; animation-delay: -0.3s;"><text x="995" y="0"><tspan x="995" dy="0">未</tspan><tspan x="995" dy="14">知</tspan><tspan x="995" dy="14">領</tspan><tspan x="995" dy="14">域</tspan><tspan x="995" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 5.6s; animation-delay: -2.7s;"><text x="1035" y="0"><tspan x="1035" dy="0">終</tspan><tspan x="1035" dy="14">焉</tspan><tspan x="1035" dy="14">始</tspan><tspan x="1035" dy="14">動</tspan><tspan x="1035" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 8.3s; animation-delay: -5.1s;"><text x="1075" y="0"><tspan x="1075" dy="0">電</tspan><tspan x="1075" dy="14">磁</tspan><tspan x="1075" dy="14">パ</tspan><tspan x="1075" dy="14">ル</tspan><tspan x="1075" dy="14">ス</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 6.8s; animation-delay: -1.0s;"><text x="1115" y="0"><tspan x="1115" dy="0">内</tspan><tspan x="1115" dy="14">部</tspan><tspan x="1115" dy="14">構</tspan><tspan x="1115" dy="14">造</tspan><tspan x="1115" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 7.3s; animation-delay: -3.3s;"><text x="1155" y="0"><tspan x="1155" dy="0">時</tspan><tspan x="1155" dy="14">空</tspan><tspan x="1155" dy="14">歪</tspan><tspan x="1155" dy="14">曲</tspan><tspan x="1155" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 6.2s; animation-delay: -2.4s;"><text x="1195" y="0"><tspan x="1195" dy="0">光</tspan><tspan x="1195" dy="14">速</tspan><tspan x="1195" dy="14">飛</tspan><tspan x="1195" dy="14">行</tspan><tspan x="1195" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 8.6s; animation-delay: -0.7s;"><text x="1235" y="0"><tspan x="1235" dy="0">真</tspan><tspan x="1235" dy="14">実</tspan><tspan x="1235" dy="14">解</tspan><tspan x="1235" dy="14">読</tspan><tspan x="1235" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 5.5s; animation-delay: -4.1s;"><text x="1275" y="0"><tspan x="1275" dy="0">異</tspan><tspan x="1275" dy="14">相</tspan><tspan x="1275" dy="14">次</tspan><tspan x="1275" dy="14">元</tspan><tspan x="1275" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 7.7s; animation-delay: -1.8s;"><text x="1315" y="0"><tspan x="1315" dy="0">神</tspan><tspan x="1315" dy="14">気</tspan><tspan x="1315" dy="14">覚</tspan><tspan x="1315" dy="14">醒</tspan><tspan x="1315" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 6.3s; animation-delay: -3.0s;"><text x="1355" y="0"><tspan x="1355" dy="0">未</tspan><tspan x="1355" dy="14">来</tspan><tspan x="1355" dy="14">予</tspan><tspan x="1355" dy="14">測</tspan><tspan x="1355" dy="14">1</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 8.4s; animation-delay: -5.0s;"><text x="1395" y="0"><tspan x="1395" dy="0">無</tspan><tspan x="1395" dy="14">限</tspan><tspan x="1395" dy="14">ル</tspan><tspan x="1395" dy="14">丨</tspan><tspan x="1395" dy="14">プ</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 5.7s; animation-delay: -2.2s;"><text x="1435" y="0"><tspan x="1435" dy="0">制</tspan><tspan x="1435" dy="14">御</tspan><tspan x="1435" dy="14">不</tspan><tspan x="1435" dy="14">能</tspan><tspan x="1435" dy="14">0</tspan></text></g>
-    <g class="bg-rain" style="animation-duration: 7.1s; animation-delay: -0.9s;"><text x="1475" y="0"><tspan x="1475" dy="0">超</tspan><tspan x="1475" dy="14">越</tspan><tspan x="1475" dy="14">者</tspan><tspan x="1475" dy="14">1</tspan></text></g>
+  <g class="matrix-text" font-size="12" fill="#7a0018" opacity="0.55">
+    <g class="bg-rain" style="animation-duration: 7.4s; animation-delay: -4.2s;"><text x="40" y="0"><tspan x="40" dy="0">層</tspan><tspan x="40" dy="14">未</tspan><tspan x="40" dy="14">部</tspan><tspan x="40" dy="14">電</tspan><tspan x="40" dy="14">世</tspan><tspan x="40" dy="14">時</tspan><tspan x="40" dy="14">知</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 7.8s; animation-delay: -0.9s;"><text x="150" y="0"><tspan x="150" dy="0">空</tspan><tspan x="150" dy="14">暗</tspan><tspan x="150" dy="14">制</tspan><tspan x="150" dy="14">終</tspan><tspan x="150" dy="14">空</tspan><tspan x="150" dy="14">空</tspan><tspan x="150" dy="14">世</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 7.5s; animation-delay: -4.5s;"><text x="260" y="0"><tspan x="260" dy="0">神</tspan><tspan x="260" dy="14">構</tspan><tspan x="260" dy="14">層</tspan><tspan x="260" dy="14">漆</tspan><tspan x="260" dy="14">神</tspan><tspan x="260" dy="14">速</tspan><tspan x="260" dy="14">工</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 7.1s; animation-delay: -0.5s;"><text x="370" y="0"><tspan x="370" dy="0">意</tspan><tspan x="370" dy="14">空</tspan><tspan x="370" dy="14">工</tspan><tspan x="370" dy="14">工</tspan><tspan x="370" dy="14">考</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 6.4s; animation-delay: -4.8s;"><text x="480" y="0"><tspan x="480" dy="0">漆</tspan><tspan x="480" dy="14">脳</tspan><tspan x="480" dy="14">未</tspan><tspan x="480" dy="14">実</tspan><tspan x="480" dy="14">界</tspan><tspan x="480" dy="14">由</tspan><tspan x="480" dy="14">世</tspan><tspan x="480" dy="14">能</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 7.3s; animation-delay: -3.9s;"><text x="1030" y="0"><tspan x="1030" dy="0">越</tspan><tspan x="1030" dy="14">習</tspan><tspan x="1030" dy="14">意</tspan><tspan x="1030" dy="14">限</tspan><tspan x="1030" dy="14">神</tspan><tspan x="1030" dy="14">間</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 7.9s; animation-delay: -4.3s;"><text x="1140" y="0"><tspan x="1140" dy="0">焉</tspan><tspan x="1140" dy="14">神</tspan><tspan x="1140" dy="14">速</tspan><tspan x="1140" dy="14">暗</tspan><tspan x="1140" dy="14">量</tspan><tspan x="1140" dy="14">志</tspan><tspan x="1140" dy="14">層</tspan><tspan x="1140" dy="14">漆</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 8.0s; animation-delay: -3.5s;"><text x="1250" y="0"><tspan x="1250" dy="0">赤</tspan><tspan x="1250" dy="14">神</tspan><tspan x="1250" dy="14">意</tspan><tspan x="1250" dy="14">算</tspan><tspan x="1250" dy="14">真</tspan><tspan x="1250" dy="14">終</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 7.3s; animation-delay: -3.1s;"><text x="1360" y="0"><tspan x="1360" dy="0">算</tspan><tspan x="1360" dy="14">志</tspan><tspan x="1360" dy="14">気</tspan><tspan x="1360" dy="14">終</tspan><tspan x="1360" dy="14">内</tspan></text></g>
+    <g class="bg-rain" style="animation-duration: 5.7s; animation-delay: -3.7s;"><text x="1470" y="0"><tspan x="1470" dy="0">速</tspan><tspan x="1470" dy="14">能</tspan><tspan x="1470" dy="14">人</tspan><tspan x="1470" dy="14">子</tspan><tspan x="1470" dy="14">来</tspan><tspan x="1470" dy="14">時</tspan><tspan x="1470" dy="14">真</tspan></text></g>
   </g>
 
-  <!-- LAYER 2: MIDGROUND RAIN (Medium crisp font, vibrant gradient crimson to bright pink-red) -->
-  <g class="matrix-text" font-size="16" font-weight="bold">
-    <!-- Stream 1: 「覚醒せよ」 Awaken! -->
-    <g class="mid-rain" style="animation-duration: 4.8s; animation-delay: -0.4s;">
-      <text x="45" y="0">
-        <tspan x="45" dy="0" fill="#800014">0</tspan>
-        <tspan x="45" dy="21" fill="#a6001a">1</tspan>
-        <tspan x="45" dy="21" fill="#cc0020">電</tspan>
-        <tspan x="45" dy="21" fill="#e60024">脳</tspan>
-        <tspan x="45" dy="21" fill="#ff002b">覚</tspan>
-        <tspan x="45" dy="21" fill="#ff0033">醒</tspan>
-        <tspan x="45" dy="21" fill="#ff2647">せ</tspan>
-        <tspan x="45" dy="21" fill="#ff4d66">よ</tspan>
-        <tspan x="45" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">神</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 2: 「真実の光」 Light of Truth -->
-    <g class="mid-rain" style="animation-duration: 5.4s; animation-delay: -2.8s;">
-      <text x="125" y="0">
-        <tspan x="125" dy="0" fill="#66000f">マ</tspan>
-        <tspan x="125" dy="21" fill="#8d0015">ト</tspan>
-        <tspan x="125" dy="21" fill="#b3001a">リ</tspan>
-        <tspan x="125" dy="21" fill="#d90020">ッ</tspan>
-        <tspan x="125" dy="21" fill="#ff0026">ク</tspan>
-        <tspan x="125" dy="21" fill="#ff0033">ス</tspan>
-        <tspan x="125" dy="21" fill="#ff2647">真</tspan>
-        <tspan x="125" dy="21" fill="#ff4d66">実</tspan>
-        <tspan x="125" dy="21" fill="#ff738a">光</tspan>
-        <tspan x="125" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">解</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 3: 「漆黒の夢」 Jet Black Dream -->
-    <g class="mid-rain" style="animation-duration: 4.3s; animation-delay: -1.1s;">
-      <text x="205" y="0">
-        <tspan x="205" dy="0" fill="#800014">1</tspan>
-        <tspan x="205" dy="21" fill="#a6001a">0</tspan>
-        <tspan x="205" dy="21" fill="#cc0020">漆</tspan>
-        <tspan x="205" dy="21" fill="#e60024">黒</tspan>
-        <tspan x="205" dy="21" fill="#ff002b">の</tspan>
-        <tspan x="205" dy="21" fill="#ff0033">夢</tspan>
-        <tspan x="205" dy="21" fill="#ff3352">虚</tspan>
-        <tspan x="205" dy="21" fill="#ff5972">構</tspan>
-        <tspan x="205" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">創</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 4: 「無限回路」 Infinite Circuit -->
-    <g class="mid-rain" style="animation-duration: 5.9s; animation-delay: -4.0s;">
-      <text x="285" y="0">
-        <tspan x="285" dy="0" fill="#66000f">シ</tspan>
-        <tspan x="285" dy="21" fill="#8d0015">ス</tspan>
-        <tspan x="285" dy="21" fill="#b3001a">テ</tspan>
-        <tspan x="285" dy="21" fill="#d90020">ム</tspan>
-        <tspan x="285" dy="21" fill="#ff0026">無</tspan>
-        <tspan x="285" dy="21" fill="#ff1a3c">限</tspan>
-        <tspan x="285" dy="21" fill="#ff3352">回</tspan>
-        <tspan x="285" dy="21" fill="#ff5972">路</tspan>
-        <tspan x="285" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">0</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 5: 「量子暗号」 Quantum Cryptography -->
-    <g class="mid-rain" style="animation-duration: 4.6s; animation-delay: -1.9s;">
-      <text x="365" y="0">
-        <tspan x="365" dy="0" fill="#800014">1</tspan>
-        <tspan x="365" dy="21" fill="#a6001a">1</tspan>
-        <tspan x="365" dy="21" fill="#cc0020">量</tspan>
-        <tspan x="365" dy="21" fill="#e60024">子</tspan>
-        <tspan x="365" dy="21" fill="#ff002b">暗</tspan>
-        <tspan x="365" dy="21" fill="#ff0033">号</tspan>
-        <tspan x="365" dy="21" fill="#ff2647">解</tspan>
-        <tspan x="365" dy="21" fill="#ff4d66">読</tspan>
-        <tspan x="365" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">鍵</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 6: 「未来創造」 Future Creation -->
-    <g class="mid-rain" style="animation-duration: 5.1s; animation-delay: -0.7s;">
-      <text x="445" y="0">
-        <tspan x="445" dy="0" fill="#66000f">未</tspan>
-        <tspan x="445" dy="21" fill="#8d0015">来</tspan>
-        <tspan x="445" dy="21" fill="#cc001e">創</tspan>
-        <tspan x="445" dy="21" fill="#f20024">造</tspan>
-        <tspan x="445" dy="21" fill="#ff1a3d">新</tspan>
-        <tspan x="445" dy="21" fill="#ff3352">世</tspan>
-        <tspan x="445" dy="21" fill="#ff667f">界</tspan>
-        <tspan x="445" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">1</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 7: 「自由意志」 Free Will -->
-    <g class="mid-rain" style="animation-duration: 4.9s; animation-delay: -3.3s;">
-      <text x="525" y="0">
-        <tspan x="525" dy="0" fill="#800014">自</tspan>
-        <tspan x="525" dy="21" fill="#a6001a">由</tspan>
-        <tspan x="525" dy="21" fill="#cc0020">意</tspan>
-        <tspan x="525" dy="21" fill="#e60024">志</tspan>
-        <tspan x="525" dy="21" fill="#ff002b">接</tspan>
-        <tspan x="525" dy="21" fill="#ff0033">続</tspan>
-        <tspan x="525" dy="21" fill="#ff2647">完</tspan>
-        <tspan x="525" dy="21" fill="#ff5972">了</tspan>
-        <tspan x="525" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">0</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 8: 「神速思考」 God-Speed Thought -->
-    <g class="mid-rain" style="animation-duration: 5.6s; animation-delay: -1.6s;">
-      <text x="605" y="0">
-        <tspan x="605" dy="0" fill="#66000f">神</tspan>
-        <tspan x="605" dy="21" fill="#8d0015">速</tspan>
-        <tspan x="605" dy="21" fill="#cc0020">思</tspan>
-        <tspan x="605" dy="21" fill="#e60024">考</tspan>
-        <tspan x="605" dy="21" fill="#ff002b">超</tspan>
-        <tspan x="605" dy="21" fill="#ff0033">越</tspan>
-        <tspan x="605" dy="21" fill="#ff2647">1</tspan>
-        <tspan x="605" dy="21" fill="#ff4d63">0</tspan>
-        <tspan x="605" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">命</tspan>
-      </text>
-    </g>
-
-    <!-- Right Side Midground Streams -->
-    <!-- Stream 9: 「限界突破」 Break Limits -->
-    <g class="mid-rain" style="animation-duration: 4.4s; animation-delay: -2.8s;">
-      <text x="895" y="0">
-        <tspan x="895" dy="0" fill="#800014">限</tspan>
-        <tspan x="895" dy="21" fill="#a6001a">界</tspan>
-        <tspan x="895" dy="21" fill="#cc0020">突</tspan>
-        <tspan x="895" dy="21" fill="#e60024">破</tspan>
-        <tspan x="895" dy="21" fill="#ff002b">能</tspan>
-        <tspan x="895" dy="21" fill="#ff0033">力</tspan>
-        <tspan x="895" dy="21" fill="#ff2647">全</tspan>
-        <tspan x="895" dy="21" fill="#ff5972">開</tspan>
-        <tspan x="895" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">光</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 10: 「幻影世界」 World of Illusions -->
-    <g class="mid-rain" style="animation-duration: 5.2s; animation-delay: -0.2s;">
-      <text x="975" y="0">
-        <tspan x="975" dy="0" fill="#66000f">幻</tspan>
-        <tspan x="975" dy="21" fill="#8d0015">影</tspan>
-        <tspan x="975" dy="21" fill="#b3001a">世</tspan>
-        <tspan x="975" dy="21" fill="#d90020">界</tspan>
-        <tspan x="975" dy="21" fill="#ff0026">再</tspan>
-        <tspan x="975" dy="21" fill="#ff1a3c">起</tspan>
-        <tspan x="975" dy="21" fill="#ff3352">動</tspan>
-        <tspan x="975" dy="21" fill="#ff5972">中</tspan>
-        <tspan x="975" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">1</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 11: 「絶対領域」 Absolute Realm -->
-    <g class="mid-rain" style="animation-duration: 4.5s; animation-delay: -3.7s;">
-      <text x="1055" y="0">
-        <tspan x="1055" dy="0" fill="#800014">絶</tspan>
-        <tspan x="1055" dy="21" fill="#a6001a">対</tspan>
-        <tspan x="1055" dy="21" fill="#cc0020">領</tspan>
-        <tspan x="1055" dy="21" fill="#e60024">域</tspan>
-        <tspan x="1055" dy="21" fill="#ff002b">聖</tspan>
-        <tspan x="1055" dy="21" fill="#ff0033">域</tspan>
-        <tspan x="1055" dy="21" fill="#ff1a40">防</tspan>
-        <tspan x="1055" dy="21" fill="#ff4d63">御</tspan>
-        <tspan x="1055" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">0</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 12: 「次元上昇」 Dimensional Ascension -->
-    <g class="mid-rain" style="animation-duration: 5.7s; animation-delay: -1.3s;">
-      <text x="1135" y="0">
-        <tspan x="1135" dy="0" fill="#66000f">次</tspan>
-        <tspan x="1135" dy="21" fill="#8d0015">元</tspan>
-        <tspan x="1135" dy="21" fill="#cc001e">上</tspan>
-        <tspan x="1135" dy="21" fill="#f20024">昇</tspan>
-        <tspan x="1135" dy="21" fill="#ff1a3d">高</tspan>
-        <tspan x="1135" dy="21" fill="#ff3352">度</tspan>
-        <tspan x="1135" dy="21" fill="#ff667f">同</tspan>
-        <tspan x="1135" dy="21" fill="#ff99a8">期</tspan>
-        <tspan x="1135" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">神</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 13: 「電波障害」 Signal Interference -->
-    <g class="mid-rain" style="animation-duration: 4.1s; animation-delay: -2.2s;">
-      <text x="1215" y="0">
-        <tspan x="1215" dy="0" fill="#800014">電</tspan>
-        <tspan x="1215" dy="21" fill="#a6001a">波</tspan>
-        <tspan x="1215" dy="21" fill="#cc0020">障</tspan>
-        <tspan x="1215" dy="21" fill="#e60024">害</tspan>
-        <tspan x="1215" dy="21" fill="#ff002b">ノ</tspan>
-        <tspan x="1215" dy="21" fill="#ff0033">イ</tspan>
-        <tspan x="1215" dy="21" fill="#ff2647">ズ</tspan>
-        <tspan x="1215" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">0</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 14: 「創世記」 Genesis -->
-    <g class="mid-rain" style="animation-duration: 5.0s; animation-delay: -4.4s;">
-      <text x="1295" y="0">
-        <tspan x="1295" dy="0" fill="#66000f">創</tspan>
-        <tspan x="1295" dy="21" fill="#8d0015">世</tspan>
-        <tspan x="1295" dy="21" fill="#cc0020">記</tspan>
-        <tspan x="1295" dy="21" fill="#e60024">新</tspan>
-        <tspan x="1295" dy="21" fill="#ff002b">章</tspan>
-        <tspan x="1295" dy="21" fill="#ff0033">始</tspan>
-        <tspan x="1295" dy="21" fill="#ff2647">動</tspan>
-        <tspan x="1295" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">1</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 15: 「時空超え」 Beyond Time Space -->
-    <g class="mid-rain" style="animation-duration: 4.7s; animation-delay: -0.9s;">
-      <text x="1375" y="0">
-        <tspan x="1375" dy="0" fill="#800014">時</tspan>
-        <tspan x="1375" dy="21" fill="#a6001a">空</tspan>
-        <tspan x="1375" dy="21" fill="#cc001e">超</tspan>
-        <tspan x="1375" dy="21" fill="#f20024">え</tspan>
-        <tspan x="1375" dy="21" fill="#ff1a3d">旅</tspan>
-        <tspan x="1375" dy="21" fill="#ff3352">立</tspan>
-        <tspan x="1375" dy="21" fill="#ff667f">ち</tspan>
-        <tspan x="1375" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">0</tspan>
-      </text>
-    </g>
-
-    <!-- Stream 16: 「暗黒物質」 Dark Matter -->
-    <g class="mid-rain" style="animation-duration: 5.3s; animation-delay: -3.1s;">
-      <text x="1455" y="0">
-        <tspan x="1455" dy="0" fill="#66000f">暗</tspan>
-        <tspan x="1455" dy="21" fill="#8d0015">黒</tspan>
-        <tspan x="1455" dy="21" fill="#cc0020">物</tspan>
-        <tspan x="1455" dy="21" fill="#e60024">質</tspan>
-        <tspan x="1455" dy="21" fill="#ff002b">反</tspan>
-        <tspan x="1455" dy="21" fill="#ff0033">応</tspan>
-        <tspan x="1455" dy="21" fill="#ff2647">1</tspan>
-        <tspan x="1455" dy="21" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">解</tspan>
-      </text>
-    </g>
+  <g class="matrix-text" font-size="16" fill="#ff1a40">
+    <g class="mid-rain" style="animation-duration: 5.1s; animation-delay: -1.1s;"><text x="120" y="0"><tspan x="120" dy="0">未</tspan><tspan x="120" dy="14">時</tspan><tspan x="120" dy="14">人</tspan><tspan x="120" dy="14">速</tspan></text></g>
+    <g class="mid-rain" style="animation-duration: 5.9s; animation-delay: -2.8s;"><text x="320" y="0"><tspan x="320" dy="0">子</tspan><tspan x="320" dy="14">路</tspan><tspan x="320" dy="14">由</tspan><tspan x="320" dy="14">👾</tspan><tspan x="320" dy="14">👾</tspan><tspan x="320" dy="14">思</tspan></text></g>
+    <g class="mid-rain" style="animation-duration: 5.2s; animation-delay: -2.3s;"><text x="520" y="0"><tspan x="520" dy="0">赤</tspan><tspan x="520" dy="14">漆</tspan><tspan x="520" dy="14">空</tspan><tspan x="520" dy="14">焉</tspan><tspan x="520" dy="14">限</tspan><tspan x="520" dy="14">世</tspan></text></g>
+    <g class="mid-rain" style="animation-duration: 5.8s; animation-delay: -2.2s;"><text x="980" y="0"><tspan x="980" dy="0">路</tspan><tspan x="980" dy="14">志</tspan><tspan x="980" dy="14">👾</tspan><tspan x="980" dy="14">回</tspan><tspan x="980" dy="14">1</tspan><tspan x="980" dy="14">間</tspan></text></g>
+    <g class="mid-rain" style="animation-duration: 5.5s; animation-delay: -2.1s;"><text x="1180" y="0"><tspan x="1180" dy="0">系</tspan><tspan x="1180" dy="14">神</tspan><tspan x="1180" dy="14">電</tspan><tspan x="1180" dy="14">知</tspan></text></g>
+    <g class="mid-rain" style="animation-duration: 4.2s; animation-delay: -2.1s;"><text x="1380" y="0"><tspan x="1380" dy="0">1</tspan><tspan x="1380" dy="14">回</tspan><tspan x="1380" dy="14">志</tspan><tspan x="1380" dy="14">👾</tspan><tspan x="1380" dy="14">👾</tspan></text></g>
   </g>
 
-  <!-- LAYER 3: FOREGROUND HEAVY RAIN (Large, bold, intense neon drop glow) -->
-  <g class="matrix-text" font-size="23" font-weight="900" filter="url(#neon-red-glow)">
-
-    <!-- Hero Column 1 (Left) - 「電脳深淵」 Cyberspace Abyss -->
-    <g class="fore-rain" style="animation-duration: 3.1s; animation-delay: -0.2s;">
-      <text x="85" y="0">
-        <tspan x="85" dy="0" fill="#99001b">電</tspan>
-        <tspan x="85" dy="28" fill="#cc0024">脳</tspan>
-        <tspan x="85" dy="28" fill="#f2002b">深</tspan>
-        <tspan x="85" dy="28" fill="#ff0033">淵</tspan>
-        <tspan x="85" dy="28" fill="#ff3355">1</tspan>
-        <tspan x="85" dy="28" fill="#ff6680">0</tspan>
-        <tspan x="85" dy="28" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">覚</tspan>
-      </text>
-    </g>
-
-    <!-- Hero Column 2 (Left-Mid) - 「真実解放」 Liberation of Truth -->
-    <g class="fore-rain" style="animation-duration: 2.8s; animation-delay: -1.7s;">
-      <text x="245" y="0">
-        <tspan x="245" dy="0" fill="#800016">真</tspan>
-        <tspan x="245" dy="28" fill="#b3001f">実</tspan>
-        <tspan x="245" dy="28" fill="#e60028">解</tspan>
-        <tspan x="245" dy="28" fill="#ff0030">放</tspan>
-        <tspan x="245" dy="28" fill="#ff335b">0</tspan>
-        <tspan x="245" dy="28" fill="#ff809b">1</tspan>
-        <tspan x="245" dy="28" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">神</tspan>
-      </text>
-    </g>
-
-    <!-- Hero Column 3 (Mid-Left) - 「自我意識」 Self Consciousness -->
-    <g class="fore-rain" style="animation-duration: 3.4s; animation-delay: -0.9s;">
-      <text x="405" y="0">
-        <tspan x="405" dy="0" fill="#99001b">自</tspan>
-        <tspan x="405" dy="28" fill="#cc0024">我</tspan>
-        <tspan x="405" dy="28" fill="#f2002b">意</tspan>
-        <tspan x="405" dy="28" fill="#ff0033">識</tspan>
-        <tspan x="405" dy="28" fill="#ff3355">新</tspan>
-        <tspan x="405" dy="28" fill="#ff809b">型</tspan>
-        <tspan x="405" dy="28" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">光</tspan>
-      </text>
-    </g>
-
-    <!-- Hero Column 4 (Mid-Right) - 「無限資源」 Infinite Resources -->
-    <g class="fore-rain" style="animation-duration: 3.3s; animation-delay: -2.3s;">
-      <text x="1015" y="0">
-        <tspan x="1015" dy="0" fill="#800016">無</tspan>
-        <tspan x="1015" dy="28" fill="#b3001f">限</tspan>
-        <tspan x="1015" dy="28" fill="#e60028">資</tspan>
-        <tspan x="1015" dy="28" fill="#ff0030">源</tspan>
-        <tspan x="1015" dy="28" fill="#ff335b">1</tspan>
-        <tspan x="1015" dy="28" fill="#ff809b">0</tspan>
-        <tspan x="1015" dy="28" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">命</tspan>
-      </text>
-    </g>
-
-    <!-- Hero Column 5 (Right-Mid) - 「未来創生」 Future Genesis -->
-    <g class="fore-rain" style="animation-duration: 2.9s; animation-delay: -1.4s;">
-      <text x="1175" y="0">
-        <tspan x="1175" dy="0" fill="#99001b">未</tspan>
-        <tspan x="1175" dy="28" fill="#cc0024">来</tspan>
-        <tspan x="1175" dy="28" fill="#f2002b">創</tspan>
-        <tspan x="1175" dy="28" fill="#ff0033">生</tspan>
-        <tspan x="1175" dy="28" fill="#ff3355">0</tspan>
-        <tspan x="1175" dy="28" fill="#ff6680">1</tspan>
-        <tspan x="1175" dy="28" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">1</tspan>
-      </text>
-    </g>
-
-    <!-- Hero Column 6 (Right) - 「絶対防壁」 Absolute Firewall -->
-    <g class="fore-rain" style="animation-duration: 3.2s; animation-delay: -0.6s;">
-      <text x="1335" y="0">
-        <tspan x="1335" dy="0" fill="#800016">絶</tspan>
-        <tspan x="1335" dy="28" fill="#b3001f">対</tspan>
-        <tspan x="1335" dy="28" fill="#e60028">防</tspan>
-        <tspan x="1335" dy="28" fill="#ff0030">壁</tspan>
-        <tspan x="1335" dy="28" fill="#ff335b">完</tspan>
-        <tspan x="1335" dy="28" fill="#ff809b">全</tspan>
-        <tspan x="1335" dy="28" fill="#ffffff" class="head-char" filter="url(#head-lead-glow)">0</tspan>
-      </text>
-    </g>
-  </g>
+  <g class="mid-rain" style="animation-duration: 5.0s; animation-delay: -2.0s;"><text x="330" y="260" font-size="64" text-anchor="middle" fill="#ff4d6d" filter="url(#neon-red-glow)">👾</text></g>
+  <g class="mid-rain" style="animation-duration: 6.2s; animation-delay: -4.1s;"><text x="1170" y="260" font-size="64" text-anchor="middle" fill="#ff4d6d" filter="url(#neon-red-glow)">👾</text></g>
 
   <!-- CENTER ELEMENT: CYBERPUNK HIGH-TECH BADGE for "rv2hex@github" -->
   <g transform="translate(750, 250)">
